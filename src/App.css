@@ -1,0 +1,443 @@
+*{box-sizing: border-box};
+
+root {
+    background-color: #b4e3e9;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d3f7f7;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    margin: 5vh auto;
+    width: 80vw;
+    max-width: 1000px;
+    height: 500px;
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+    'form'
+    'centerSection'
+    'forecastSection';
+    background-color: #63cdda;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.formSection {
+    display: block;
+    min-height: 65px;
+    max-height: 65px;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+}
+
+.form {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.form input {
+    height: 35px;
+    margin: auto 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border:1px solid #63cdda;
+    background-color: #e2fafd;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.form input:focus {
+    outline-style: none;
+}
+
+.zip {
+    width: 15vw;
+}
+
+.city {
+    width: 25vw;
+}
+
+.country {
+    width: 15vw;
+}
+
+.form button {
+    margin: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #63cdda;
+    color: white;
+    font-weight: bold;
+    background-color: #137297;
+}
+
+.centerSection {
+    grid-area: centerSection;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.leftSection {
+    min-height: 300px;
+    max-height: 300px;
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    background-color: gray;
+    position: relative;
+    z-index: 1;
+}
+
+.tempLeft {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    z-index: 2;
+}
+
+.tempLeft p {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+}
+
+.tempLeft p span {
+    font-size: 1.5rem;
+}
+
+.imgStyle {
+    position: absolute;
+    bottom: -5px;
+}
+
+.image { 
+    width: 100%;
+    object-fit: fill;
+    z-index: 1;
+}
+
+.rightSection {
+    position: relative;
+    min-height: 300px;
+    width: 100%;
+    max-width: 500px;
+    display: grid;
+    grid-template-areas: 
+    'timeBar'
+    'weatherInfo';
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: #ccf0f5;
+    background-color: #3dc1d3;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.timeBar {
+    height: 150px;
+    grid-area: timeBar;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+}
+
+.local {
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.currentTime {
+    margin: 0;
+    padding: 0;
+    font-weight: 900;
+    font-size: 4rem;
+    color: #137297;
+}
+
+.currentDate {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+}
+
+.weatherInfo {
+    position: relative;
+
+    top: -10px;
+    margin: 0;
+    padding: 0;
+    grid-area: weatherInfo;
+    /* display: none; */
+}
+
+.weatherInfo p {
+    margin: 0;
+    padding: 0.5vh 0;
+}
+
+.weatherInfo p span {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #137297;
+}
+
+.forecastSection {
+    grid-area: forecastSection;
+    height: 150px;
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 0;
+    background-color: #d3f7f7;
+}
+
+.forecastSection div {
+    height: 150px;
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: absolute;
+}
+
+.day {
+    margin: 0;
+    padding: 30px 0 0 0;
+    display: block;
+    text-align: center;
+}
+
+.day img {
+    position: absolute;
+    top: 18px;
+    margin-left: -90px;
+    transform: scale(0.8);
+}
+
+.day span {
+    font-size: 2rem;
+}
+
+.dayItem {
+    margin: auto 0;
+    color: #264e6d;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+    list-style-type: none;
+}
+
+.dayTwo {
+    background-color: #63cdda;
+    border-bottom-left-radius: 15px;
+}
+
+.dayThree {
+    background-color: #34b3c4;
+}
+
+.dayFour {
+    background-color: #63cdda;
+}
+
+.dayFive {
+    background-color: #34b3c4;
+}
+
+.daySix {
+    background-color: #63cdda;
+    border-bottom-right-radius: 15px;
+}
+
+@media screen and (max-width: 1150px){
+    .image { width: 110%; }
+}
+
+@media screen and (max-width: 1050px){
+    .image { 
+        position: relative;
+        right: 30px;
+        width: 126%; 
+    }
+    .city { width: 30vw; }
+    
+    .day span { font-size: 1.8rem; }
+    .day img {
+        margin-left: -80px;
+        transform: scale(0.7);
+    }
+}
+
+@media screen and (max-width: 900px){
+    .form input { margin: auto 8px; }
+    .country { width: 15vw; }
+
+    .image { 
+        right: 50px;
+        width: 145%; 
+    }
+
+    .currentTime { font-size: 3.5rem; }
+
+    .day { padding: 0; }
+    .day img {
+        position: relative;
+        top: 15px;
+        margin-left: 0px;
+    }
+    .dayItem { line-height: 1.3rem; }
+}
+
+@media screen and (max-width: 800px){
+    .image { width: 155%; }
+}
+
+@media screen and (max-width: 750px){
+    .container { width: 90vw; }
+
+    .form input { margin: auto 3px; }
+    .country { width: 18vw; }
+
+    .image { width: 167%; }
+
+    .tempLeft p { font-size: 1.8rem; }
+    .tempLeft p span { font-size: 1.3rem; }
+
+    .local { 
+        font-size: 1.2rem; 
+        margin: 20px 0 0 0;
+    }
+    .currentTime { font-size: 3rem; }
+    .currentDate { font-size: 1.2rem; }
+
+    .dayItem { font-size: 0.8rem; }
+}
+
+@media screen and (max-width: 650px){
+    .currentTime { font-size: 2.8rem; }
+}
+
+@media screen and (max-width: 600px){
+    .container { 
+        margin: 0;
+        width: 100%;
+        height: 720px; 
+        grid-template-rows: 160px 280px 530px;
+        overflow: visible;
+        border-radius: 0px;
+    }
+    .formSection {
+        display: block;
+        min-height: 160px;
+        max-height: 160px;
+        width: 100%;
+        max-width: 1000px;
+        position: relative;
+    }
+    .form {
+        margin: 20px 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    .form input {
+        height: 35px;
+        margin: 3px 15px;
+        padding: 10px;
+    }
+    .zip { width: 65%; } 
+    .city { width: 65%; }  
+    .country { width: 65%; }
+
+    .form button {
+        position: absolute;
+        right: 20px;
+        top: 88px;
+        width: 20%;
+    }
+
+    .centerSection {
+        display: flex;
+        flex-direction: column;
+    }
+    .leftSection {
+        min-height: 280px;
+        max-height: 280px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .image { 
+        top: 30px;
+        right: 0px;
+        width: 100%; 
+    }
+
+    .rightSection {
+        min-height: 280px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .forecastSection {
+        top: 280px;
+        /* display: none; */
+    }
+
+    .forecastSection div {
+        display: flex;
+        flex-direction: column;
+    }
+    .day {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        text-align: center;
+    }
+    .day img {
+        top: 0px;
+        margin-left: 20px;
+        transform: scale(1);
+    }
+    .day span {
+        font-size: 1.7rem;
+    }
+    .dayTwo {
+        border-bottom-left-radius: 0px;
+    }
+    .dayItem {
+        margin: auto 5px;
+        font-size: 0.9rem;
+    }
+    .forecastDay {
+        position: absolute;
+        right: 20px;
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .image { 
+        top: 0px;
+        right: 10px;
+        width: 120%; 
+    }
+}
+
