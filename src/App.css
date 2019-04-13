@@ -398,7 +398,7 @@ body {
 
     .forecastSection {
         top: 280px;
-        /* display: none; */
+        display: none;
     }
 
     .forecastSection div {
