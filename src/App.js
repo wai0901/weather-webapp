@@ -78,13 +78,14 @@ class App extends Component {
     const dataZip = await api_callZip.json();
     const api_callName = await fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${cityName},${country}&APPID=${API_KEY}&units=imperial`);
     const dataName = await api_callName.json();
-
+    
     let data = "";
     if (cityZip) {
       data = dataZip
     } else {
       data = dataName
     }
+    // console.log(data);
     this.setState({
       temperature: data.main.temp,
       city: data.name,
@@ -139,7 +140,7 @@ class App extends Component {
     let forecastSection = {
       top: "inherits"
     }
-    if (screenWidth <= 600 && this.state.index){
+    if (this.state.weatherCode){
       forecastSection ={
         display: "block",
       }
@@ -149,7 +150,7 @@ class App extends Component {
       paddingTop: "70px",
       transition: "0.3s"
     }
-    if (this.state.index) {
+    if (this.state.weatherCode) {
       timeBarPos = {
         paddingTop: "0px",
         transition: "0.3s"
@@ -187,6 +188,7 @@ class App extends Component {
           </div>
           <div className="forecastSection" style={forecastSection}>
             <Forecast 
+            weatherCode={this.state.weatherCode}
             index={this.state.index} 
             dayTwo={this.state.dayTwo} 
             dayThree={this.state.dayThree}
