@@ -5,12 +5,13 @@ import Form from './components/Form';
 import Forecast from './components/Forecast';
 import Picture from './components/Picture';
 import './App.css';
-// import { CSSTransition } from "react-transition-group";
-// import { TransitionGroup } from "react-transition-group";
 
-const API_KEY = "6b40929ddf93880ffa2f9baa1685666c";
-const screenWidth = window.innerWidth;
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = process.env.REACT_APP_API_URL;
+const API_URL_FORECAST = process.env.REACT_APP_API_URL_FORECAST;
+
+console.log(API_KEY)
 class App extends Component {
   state = {
     temperature: undefined,
@@ -74,9 +75,9 @@ class App extends Component {
     const cityZip = (event.target.elements.cityZip.value);
     const cityName = (event.target.elements.cityName.value).split(' ').join('+');
     const country = event.target.elements.country.value;
-    const api_callZip = await fetch(`https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?zip=${cityZip},${country}&APPID=${API_KEY}&units=imperial`);
+    const api_callZip = await fetch(`${API_URL}zip=${cityZip},${country}&APPID=${API_KEY}&units=imperial`);
     const dataZip = await api_callZip.json();
-    const api_callName = await fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${cityName},${country}&APPID=${API_KEY}&units=imperial`);
+    const api_callName = await fetch(`${API_URL}q=${cityName},${country}&APPID=${API_KEY}&units=imperial`);
     const dataName = await api_callName.json();
     
     let data = "";
@@ -98,7 +99,7 @@ class App extends Component {
       error: "",
     })
     
-    const api_callForecast = await fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city},${this.state.country}&cnt=60&APPID=${API_KEY}&units=imperial`);
+    const api_callForecast = await fetch(`${API_URL_FORECAST}q=${this.state.city},${this.state.country}&cnt=60&APPID=${API_KEY}&units=imperial`);
     const dataForecast = await api_callForecast.json();
 
     this.setState({
